@@ -1,7 +1,12 @@
 # ToastNotifications
 Toast notifications for Wpf with MVVM support.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/xk2e7g0nxfh5v92q?svg=true)](https://ci.appveyor.com/project/raflop/toastnotifications)
+[![Build status](https://ci.appveyor.com/api/projects/status/xk2e7g0nxfh5v92q?svg=true)](https://ci.appveyor.com/project/raflop/toastnotifications) 
+
+[![Nuget install](https://img.shields.io/badge/nuget-install-green.svg)](https://ci.appveyor.com/project/raflop/toastnotifications)
+
+[![MIT license](https://img.shields.io/badge/mit-license-blue.svg)](https://github.com/raflop/ToastNotifications/blob/master/LICENSE)
+
 ##Demo:
 
 [![demo](http://devcrew.pl/github/toastnotifications/demo.gif)](http://devcrew.pl/github/toastnotifications/demo.gif)
