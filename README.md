@@ -6,6 +6,10 @@ Toast notifications for Wpf with MVVM support.
 
 [![demo](http://devcrew.pl/github/toastnotifications/demo.gif)](http://devcrew.pl/github/toastnotifications/demo.gif)
 
+## Instal via [Nuget Package ToastNotifications](https://www.nuget.org/packages/ToastNotifications/)
+```
+Install-Package ToastNotifications
+```
 ##Usage
 ###### xaml
 
