@@ -1,0 +1,19 @@
+﻿<Window x:Class="ToastNotificationsExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toastNotifications="clr-namespace:ToastNotifications;assembly=ToastNotifications"
+        Title="MainWindow" Height="700" Width="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <toastNotifications:NotificationTray NotificationsSource="{Binding NotificationSource}"  VerticalAlignment="Top" HorizontalAlignment="Right" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+            <Button Content="Information" Margin="5" Width="100" Click="Button_ShowInformationClick" />
+            <Button Content="Success" Margin="5" Width="100" Click="Button_ShowSuccessClick" />
+            <Button Content="Warning" Margin="5" Width="100" Click="Button_ShowWarningClick" />
+            <Button Content="Error" Margin="5" Width="100" Click="Button_ShowErrorClick" />
+        </StackPanel>
+    </Grid>
+</Window>
