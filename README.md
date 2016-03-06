@@ -10,7 +10,7 @@ Feel free to modify and use this code with MIT license.
 
 [![demo](http://devcrew.pl/github/toastnotifications/demo.gif)](http://devcrew.pl/github/toastnotifications/demo.gif)
 
-## Instal via [Nuget Package ToastNotifications](https://www.nuget.org/packages/ToastNotifications/)
+## Install via [Nuget Package ToastNotifications](https://www.nuget.org/packages/ToastNotifications/)
 ```
 Install-Package ToastNotifications
 ```
