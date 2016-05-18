@@ -10,22 +10,9 @@ namespace ToastNotifications
     /// </summary>
     public partial class NotificationTray : UserControl
     {
-        public static readonly DependencyProperty NotificationsSourceProperty = DependencyProperty.Register("NotificationsSource", typeof(NotificationsSource), typeof(NotificationTray), new PropertyMetadata(default(NotificationsSource), NotificationSourceChanged));
-
-        private static void NotificationSourceChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
-        {
-            var control = dependencyObject as NotificationTray;
-            var viewModel = eventArgs.NewValue as NotificationsSource;
-
-            if (control == null || viewModel == null)
-                return;
-
-            control._viewModel = viewModel;
-            control.DataContext = viewModel;
-        }
+        public static readonly DependencyProperty NotificationsSourceProperty = DependencyProperty.Register("NotificationsSource", typeof(NotificationsSource), typeof(NotificationTray), new PropertyMetadata(new NotificationsSource()));
 
         private Window _window;
-        private NotificationsSource _viewModel;
 
         public NotificationTray()
         {
@@ -86,7 +73,8 @@ namespace ToastNotifications
             if (control == null)
                 return;
 
-            _viewModel.Hide(control.Notification.Id);
+            // Check for null just in case binding was lost in between
+            this.NotificationsSource?.Hide(control.Notification.Id);
 
             UpdateBounds();
         }
