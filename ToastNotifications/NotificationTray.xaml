@@ -6,7 +6,7 @@
     xmlns:toastNotifications="clr-namespace:ToastNotifications"
              x:Class="ToastNotifications.NotificationTray"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             x:Name="selfie">
 	<Grid x:Name="Container">
 		<Grid.Resources>
             <Canvas x:Key="InformationIcon" Width="76" Height="76" Clip="F1 M 0,0L 76,0L 76,76L 0,76L 0,0">
@@ -43,8 +43,8 @@
 				WarningTemplate="{StaticResource WarningTemplate}"
 				ErrorTemplate="{StaticResource ErrorTemplate}"/>
 		</Grid.Resources>
-        <Popup x:Name="Popup" IsOpen="{Binding IsOpen, UpdateSourceTrigger=PropertyChanged}" StaysOpen="True" Placement="Left" AllowsTransparency="True"  >
-			<ItemsControl x:Name="ItemsControl" ItemsSource="{Binding NotificationMessages}" ItemTemplateSelector="{StaticResource NotificationTemplateSelector}"  />
+        <Popup x:Name="Popup" IsOpen="{Binding NotificationsSource.IsOpen, UpdateSourceTrigger=PropertyChanged, ElementName=selfie}" StaysOpen="True" Placement="Left" AllowsTransparency="True"  >
+            <ItemsControl x:Name="ItemsControl" ItemsSource="{Binding NotificationsSource.NotificationMessages,ElementName=selfie}" ItemTemplateSelector="{StaticResource NotificationTemplateSelector}"  />
 		</Popup>
 	</Grid>
 </UserControl>
