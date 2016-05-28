@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace ToastNotificationsExample
+namespace ConfigurationExample
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

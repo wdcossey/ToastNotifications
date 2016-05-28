@@ -15,7 +15,7 @@ namespace ToastNotifications
         #endregion private fields
 
         #region dependency properties
-        
+
         public static readonly DependencyProperty PopupFlowDirectionProperty = DependencyProperty.Register(nameof(PopupFlowDirection), typeof(PopupFlowDirection), typeof(NotificationPopupWindow), new PropertyMetadata(default(PopupFlowDirection)));
 
         public PopupFlowDirection PopupFlowDirection
@@ -29,12 +29,11 @@ namespace ToastNotifications
 
         public FrameworkElement PopupContent
         {
-            get { return (FrameworkElement) GetValue(PopupContentProperty); }
+            get { return (FrameworkElement)GetValue(PopupContentProperty); }
             set { SetValue(PopupContentProperty, value); }
         }
 
         #endregion dependency properties
-
 
         public NotificationPopupWindow(FrameworkElement attachedElemnt)
         {
@@ -117,22 +116,40 @@ namespace ToastNotifications
         {
             Owner = GetWindow(attachedElemnt);
             _attachedElement = attachedElemnt;
-            PopupFlowDirection = PopupFlowDirection.RightDown;
         }
 
         private void UpdateBounds()
         {
             var location = _attachedElement.PointToScreen(new Point(0, 0));
-            Left = location.X - Width;
-            Top = location.Y;
-        }
-    }
 
-    public enum PopupFlowDirection
-    {
-        LeftUp,
-        LeftDown,
-        RightUp,
-        RightDown
+
+            switch (PopupFlowDirection)
+            {
+                case PopupFlowDirection.LeftUp:
+                    {
+                        Left = location.X - Width;
+                        Top = location.Y - Height;
+                    }
+                    break;
+                case PopupFlowDirection.LeftDown:
+                    {
+                        Left = location.X - Width;
+                        Top = location.Y;
+                    }
+                    break;
+                case PopupFlowDirection.RightUp:
+                    {
+                        Left = location.X;
+                        Top = location.Y - Height;
+                    }
+                    break;
+                case PopupFlowDirection.RightDown:
+                    {
+                        Left = location.X;
+                        Top = location.Y;
+                    }
+                    break;
+            }
+        }
     }
 }

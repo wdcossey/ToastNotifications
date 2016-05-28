@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
@@ -37,6 +36,14 @@ namespace ToastNotifications
         public static readonly DependencyProperty ChildProperty = DependencyProperty.Register(nameof(Child), typeof(FrameworkElement), typeof(NotificationPopup), new FrameworkPropertyMetadata(default(FrameworkElement), ChildChanged));
 
         public static readonly DependencyProperty IsOpenProperty = DependencyProperty.Register(nameof(IsOpen), typeof(bool), typeof(NotificationPopup), new FrameworkPropertyMetadata(default(bool), IsOpenChanged));
+
+        public static readonly DependencyProperty PopupFlowDirectionProperty = DependencyProperty.Register(nameof(PopupFlowDirection), typeof(PopupFlowDirection), typeof(NotificationPopup), new FrameworkPropertyMetadata(default(PopupFlowDirection), PopupFlowDirectionChanged));
+
+        public PopupFlowDirection PopupFlowDirection
+        {
+            get { return (PopupFlowDirection) GetValue(PopupFlowDirectionProperty); }
+            set { SetValue(PopupFlowDirectionProperty, value); }
+        }
 
         public FrameworkElement Child
         {
@@ -85,6 +92,19 @@ namespace ToastNotifications
                 return;
 
             popup._window.PopupContent = child;
+        }
+
+        private static void PopupFlowDirectionChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
+        {
+            var popup = dependencyObject as NotificationPopup;
+            if (popup == null)
+                return;
+
+            if (eventArgs.NewValue == eventArgs.OldValue)
+                return;
+
+            var flowDirection = (PopupFlowDirection)eventArgs.NewValue;
+            popup._window.PopupFlowDirection = flowDirection;
         }
     }
 }

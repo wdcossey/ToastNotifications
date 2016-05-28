@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:toastNotifications="clr-namespace:ToastNotifications"
+             xmlns:toastNotifications="clr-namespace:ToastNotifications"
              x:Class="ToastNotifications.NotificationTray"
              mc:Ignorable="d" 
-    
              x:Name="Selfie">
 
     <UserControl.Resources>
@@ -45,7 +44,9 @@
 				ErrorTemplate="{StaticResource ErrorTemplate}"/>
     </UserControl.Resources>
     <Grid x:Name="Container">
-        <toastNotifications:NotificationPopup x:Name="Popup" IsOpen="{Binding NotificationsSource.IsOpen, UpdateSourceTrigger=PropertyChanged, ElementName=Selfie}">
+        <toastNotifications:NotificationPopup x:Name="Popup" 
+                                              PopupFlowDirection="{Binding ElementName=Selfie, Path=PopupFlowDirection}"
+                                              IsOpen="{Binding NotificationsSource.IsOpen, UpdateSourceTrigger=PropertyChanged, ElementName=Selfie}">
 
             <ItemsControl x:Name="ItemsControl" 
                           ItemsSource="{Binding NotificationsSource.NotificationMessages,ElementName=Selfie}" 

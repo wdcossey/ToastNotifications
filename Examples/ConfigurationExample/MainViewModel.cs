@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using ToastNotifications;
 
-namespace ToastNotificationsExample
+namespace ConfigurationExample
 {
     public class MainViewModel : INotifyPropertyChanged
     {
@@ -16,6 +16,19 @@ namespace ToastNotificationsExample
                 OnPropertyChanged(nameof(NotificationSource));
             }
         }
+
+        private PopupFlowDirection _popupFlowDirection;
+
+        public PopupFlowDirection PopupFlowDirection
+        {
+            get { return _popupFlowDirection; }
+            set
+            {
+                _popupFlowDirection = value; 
+                OnPropertyChanged(nameof(PopupFlowDirection));
+            }
+        }
+
 
         public MainViewModel()
         {

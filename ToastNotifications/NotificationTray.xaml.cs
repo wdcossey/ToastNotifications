@@ -10,7 +10,9 @@ namespace ToastNotifications
     public partial class NotificationTray : UserControl
     {
         public static readonly DependencyProperty NotificationsSourceProperty = DependencyProperty.Register(nameof(NotificationsSource), typeof(NotificationsSource), typeof(NotificationTray), new PropertyMetadata(new NotificationsSource()));
-        
+
+        public static readonly DependencyProperty PopupFlowDirectionProperty = DependencyProperty.Register(nameof(PopupFlowDirection), typeof(PopupFlowDirection), typeof(NotificationTray), new FrameworkPropertyMetadata(default(PopupFlowDirection)));
+
         public NotificationTray()
         {
             InitializeComponent();
@@ -32,9 +34,14 @@ namespace ToastNotifications
             set { SetValue(NotificationsSourceProperty, value); }
         }
 
+        public PopupFlowDirection PopupFlowDirection
+        {
+            get { return (PopupFlowDirection) GetValue(PopupFlowDirectionProperty); }
+            set { SetValue(PopupFlowDirectionProperty, value); }
+        }
+
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
@@ -49,7 +56,7 @@ namespace ToastNotifications
                 return;
 
             // Check for null just in case binding was lost in between
-            this.NotificationsSource?.Hide(control.Notification.Id);
+            NotificationsSource?.Hide(control.Notification.Id);
 
             //UpdateBounds();
         }
