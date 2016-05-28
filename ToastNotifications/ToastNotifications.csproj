@@ -49,6 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NotificationControl.cs" />
+    <Compile Include="NotificationPopup.cs" />
+    <Compile Include="NotificationPopupWindow.xaml.cs">
+      <DependentUpon>NotificationPopupWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NotificationsSource.cs" />
     <Compile Include="NotificationTray.xaml.cs">
       <DependentUpon>NotificationTray.xaml</DependentUpon>
@@ -81,9 +85,17 @@
     <None Include="ToastNotifications.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="NotificationPopupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NotificationTray.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\BaseTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
