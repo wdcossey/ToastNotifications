@@ -25,7 +25,7 @@ namespace ToastNotifications
             set
             {
                 _isOpen = value;
-                OnPropertyChanged("IsOpen");
+                OnPropertyChanged(nameof(IsOpen));
             }
         }
 

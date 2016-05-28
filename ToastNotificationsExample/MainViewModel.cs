@@ -13,7 +13,7 @@ namespace ToastNotificationsExample
             set
             {
                 _notificationSource = value;
-                OnPropertyChanged("NotificationSource");
+                OnPropertyChanged(nameof(NotificationSource));
             }
         }
 

@@ -26,7 +26,7 @@ namespace ToastNotifications
             set
             {
                 _message = value; 
-                OnPropertyChanged("Message");
+                OnPropertyChanged(nameof(Message));
             }
         }
 
@@ -36,7 +36,7 @@ namespace ToastNotifications
             set
             {
                 _type = value;
-                OnPropertyChanged("Type");
+                OnPropertyChanged(nameof(Type));
             }
         }
 
