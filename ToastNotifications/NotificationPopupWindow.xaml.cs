@@ -118,7 +118,7 @@ namespace ToastNotifications
             _attachedElement = attachedElemnt;
         }
 
-        private void UpdateBounds()
+        public void UpdateBounds()
         {
             var location = _attachedElement.PointToScreen(new Point(0, 0));
 

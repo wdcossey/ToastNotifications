@@ -40,6 +40,7 @@ namespace ToastNotifications
             set { SetValue(PopupFlowDirectionProperty, value); }
         }
 
+
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
         }
@@ -57,8 +58,17 @@ namespace ToastNotifications
 
             // Check for null just in case binding was lost in between
             NotificationsSource?.Hide(control.Notification.Id);
+            Popup.UpdateBounds();
+        }
 
-            //UpdateBounds();
+        private void NotificationControl_OnNotificationClosing(object sender, RoutedEventArgs e)
+        {
+            var control = sender as NotificationControl;
+
+            if (control == null)
+                return;
+
+            Popup.UpdateBounds();
         }
     }
 }

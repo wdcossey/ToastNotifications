@@ -22,6 +22,11 @@ namespace ToastNotifications
             Unloaded += OnUnloaded;
         }
 
+        public void UpdateBounds()
+        {
+            _window.UpdateBounds();
+        }
+
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
             _window = new NotificationPopupWindow(this);
@@ -30,6 +35,7 @@ namespace ToastNotifications
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
+            _window.Close();
             _window = null;
         }
 

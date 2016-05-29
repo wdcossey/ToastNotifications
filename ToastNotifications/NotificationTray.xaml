@@ -6,7 +6,7 @@
              xmlns:toastNotifications="clr-namespace:ToastNotifications"
              x:Class="ToastNotifications.NotificationTray"
              mc:Ignorable="d" 
-             x:Name="Selfie">
+             x:Name="Self">
 
     <UserControl.Resources>
         <Canvas x:Key="InformationIcon" Width="76" Height="76" Clip="F1 M 0,0L 76,0L 76,76L 0,76L 0,0">
@@ -26,17 +26,50 @@
         </Canvas>
 
         <DataTemplate x:Key="InformationTemplate">
-            <toastNotifications:NotificationControl Background="RoyalBlue" Icon="{StaticResource InformationIcon}" Notification="{Binding}"  NotificationClosed="Notification_OnNotificationClosed" />
+            <toastNotifications:NotificationControl 
+                Background="RoyalBlue" 
+                Icon="{StaticResource InformationIcon}" 
+                Notification="{Binding}"  
+                NotificationClosed="Notification_OnNotificationClosed" 
+                NotificationClosing="NotificationControl_OnNotificationClosing" >
+
+                
+            </toastNotifications:NotificationControl>
         </DataTemplate>
+        
         <DataTemplate x:Key="SuccessTemplate">
-            <toastNotifications:NotificationControl Background="LimeGreen" Icon="{StaticResource SuccessIcon}" Notification="{Binding}"  NotificationClosed="Notification_OnNotificationClosed" />
+            <toastNotifications:NotificationControl 
+                Background="LimeGreen" 
+                Icon="{StaticResource SuccessIcon}" 
+                Notification="{Binding}"  
+                NotificationClosed="Notification_OnNotificationClosed" 
+                NotificationClosing="NotificationControl_OnNotificationClosing" >
+
+            </toastNotifications:NotificationControl>
         </DataTemplate>
+        
         <DataTemplate x:Key="WarningTemplate">
-            <toastNotifications:NotificationControl Background="Orange" Icon="{StaticResource WarninIcon}" Notification="{Binding}"  NotificationClosed="Notification_OnNotificationClosed" />
+            <toastNotifications:NotificationControl
+                Background="Orange" 
+                Icon="{StaticResource WarninIcon}" 
+                Notification="{Binding}"  
+                NotificationClosed="Notification_OnNotificationClosed" 
+                NotificationClosing="NotificationControl_OnNotificationClosing"  >
+
+            </toastNotifications:NotificationControl>
         </DataTemplate>
+        
         <DataTemplate x:Key="ErrorTemplate">
-            <toastNotifications:NotificationControl Background="OrangeRed" Icon="{StaticResource ErrorIcon}" Notification="{Binding}" NotificationClosed="Notification_OnNotificationClosed" />
+            <toastNotifications:NotificationControl 
+                Background="OrangeRed" 
+                Icon="{StaticResource ErrorIcon}" 
+                Notification="{Binding}" 
+                NotificationClosed="Notification_OnNotificationClosed" 
+                NotificationClosing="NotificationControl_OnNotificationClosing"  >
+
+            </toastNotifications:NotificationControl>
         </DataTemplate>
+
         <toastNotifications:NotificationTypeTemplateSelector x:Key="NotificationTemplateSelector" 
 				InformationTemplate="{StaticResource InformationTemplate}"
 				SuccessTemplate="{StaticResource SuccessTemplate}"
@@ -45,11 +78,10 @@
     </UserControl.Resources>
     <Grid x:Name="Container">
         <toastNotifications:NotificationPopup x:Name="Popup" 
-                                              PopupFlowDirection="{Binding ElementName=Selfie, Path=PopupFlowDirection}"
-                                              IsOpen="{Binding NotificationsSource.IsOpen, UpdateSourceTrigger=PropertyChanged, ElementName=Selfie}">
+                                              PopupFlowDirection="{Binding ElementName=Self, Path=PopupFlowDirection}"
+                                              IsOpen="{Binding NotificationsSource.IsOpen, UpdateSourceTrigger=PropertyChanged, ElementName=Self}">
 
-            <ItemsControl x:Name="ItemsControl" 
-                          ItemsSource="{Binding NotificationsSource.NotificationMessages,ElementName=Selfie}" 
+            <ItemsControl x:Name="ItemsControl"  ItemsSource="{Binding NotificationsSource.NotificationMessages,ElementName=Self}" 
                           ItemTemplateSelector="{StaticResource NotificationTemplateSelector}"  />
         </toastNotifications:NotificationPopup>
     </Grid>

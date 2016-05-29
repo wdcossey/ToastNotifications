@@ -70,7 +70,7 @@
     <Style TargetType="{x:Type toastNotifications:NotificationControl}">
         <Setter Property="LayoutTransform">
             <Setter.Value>
-                <ScaleTransform x:Name="transform" />
+                <ScaleTransform x:Name="scaleTransform" ScaleX="0" ScaleY="0"/>
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
@@ -107,8 +107,8 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:.5" />
-                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX" From="0" Duration="0:0:.2"/>
-                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY" From="0" Duration="0:0:.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX" From="0" To="1" Duration="0:0:.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY" From="0" To="1" Duration="0:0:.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger.Actions>
@@ -118,7 +118,8 @@
                             <EventTrigger.Actions>
                                 <BeginStoryboard>
                                     <Storyboard x:Name="ClosingStoryboard">
-                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:.5" />
+                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX" From="1" To="0" Duration="0:0:.2"/>
                                         <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY" From="1" To="0" Duration="0:0:.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
