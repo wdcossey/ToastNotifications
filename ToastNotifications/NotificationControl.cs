@@ -11,6 +11,9 @@ namespace ToastNotifications
         public static readonly RoutedEvent NotificationClosingEvent = EventManager.RegisterRoutedEvent("NotificationClosing", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(NotificationControl));
         public static readonly RoutedEvent NotificationClosedEvent = EventManager.RegisterRoutedEvent("NotificationClosed", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(NotificationControl));
 
+        private bool _isClosing;
+        private bool _isClosed;
+
         public Canvas Icon
         {
             get { return (Canvas)GetValue(IconProperty); }
@@ -42,12 +45,20 @@ namespace ToastNotifications
 
         public NotificationControl()
         {
+            _isClosed = false;
+            _isClosing = false;
+
             Unloaded += OnUnloaded;
         }
 
 
         public void InvokeHideAnimation()
         {
+            if (_isClosing || _isClosed)
+                return;
+
+            _isClosing = true;
+
             RaiseEvent(new RoutedEventArgs(NotificationClosingEvent));
         }
 
@@ -81,6 +92,11 @@ namespace ToastNotifications
 
         private void CloseButtonClicked(object sender, RoutedEventArgs e)
         {
+            if (_isClosing || _isClosed)
+                return;
+
+            _isClosed = true;
+
             RaiseEvent(new RoutedEventArgs(NotificationClosedEvent));
         }
     }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ToastNotificationsExample.Properties
+namespace ConfigurationExample.Properties
 {
 
 

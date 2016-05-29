@@ -7,13 +7,13 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ToastNotificationsExample")]
-[assembly: AssemblyDescription("Example application using Wpf Toast Notifications")]
+[assembly: AssemblyTitle("BasicUsageExample")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DevCrew Rafał Łopatka")]
-[assembly: AssemblyProduct("ToastNotificationsExample")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("BasicUsageExample")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
-[assembly: AssemblyTrademark("Rafał Łopatka")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

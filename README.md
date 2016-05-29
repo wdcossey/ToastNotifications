@@ -80,5 +80,32 @@ public class MainViewModel : INotifyPropertyChanged
     }
 }
 ```
+
+####Configuration
+######Flow direction
+Set direction in which new notifications will appear. It's relative to notification control position.
+Avalaible options are: 
+* LeftDown  (default)
+* RightDown
+* LeftUp
+* RightUp
+
+```xml
+<toastNotifications:NotificationTray PopupFlowDirection="LeftDown"  />
+```
+
+######Notification source properties
+
+```csharp
+public MainViewModel()
+{
+    NotificationSource = new NotificationsSource
+    {
+        MaximumNotificationCount = 4,
+        NotificationLifeTime = TimeSpan.FromSeconds(3)
+    };
+}
+```
+
 ##Contributors
 Uwy (https://github.com/Uwy)

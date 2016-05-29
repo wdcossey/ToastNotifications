@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCEDEF92-A898-4533-BC15-BEF46F44E061}</ProjectGuid>
+    <ProjectGuid>{D63A8852-2028-4E0E-8FF1-F95D0066843F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ToastNotificationsExample</RootNamespace>
-    <AssemblyName>ToastNotificationsExample</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <RootNamespace>BasicUsageExample</RootNamespace>
+    <AssemblyName>BasicUsageExample</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -59,9 +59,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -98,7 +98,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ToastNotifications\ToastNotifications.csproj">
+    <ProjectReference Include="..\..\ToastNotifications\ToastNotifications.csproj">
       <Project>{60C456A0-FE6C-4C00-9E6D-B51A47E5A4F3}</Project>
       <Name>ToastNotifications</Name>
     </ProjectReference>
