@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using ToastNotifications;
 
@@ -32,7 +33,11 @@ namespace ConfigurationExample
 
         public MainViewModel()
         {
-            NotificationSource = new NotificationsSource();
+            NotificationSource = new NotificationsSource
+            {
+                MaximumNotificationCount = 4,
+                NotificationLifeTime = TimeSpan.FromSeconds(3)
+            };
         }
 
         public void ShowInformation(string message)
