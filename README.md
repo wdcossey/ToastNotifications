@@ -84,7 +84,7 @@ public class MainViewModel : INotifyPropertyChanged
 ####Configuration
 ######Flow direction
 Set direction in which new notifications will appear. It's relative to notification control position.
-Avalaible options are: 
+Avalaible options are:
 * LeftDown  (default)
 * RightDown
 * LeftUp
@@ -109,3 +109,4 @@ public MainViewModel()
 
 ##Contributors
 Uwy (https://github.com/Uwy)
+Andy Li (https://github.com/oneandy)
