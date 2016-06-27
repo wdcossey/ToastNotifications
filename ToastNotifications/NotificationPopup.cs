@@ -105,6 +105,8 @@ namespace ToastNotifications
             var popup = dependencyObject as NotificationPopup;
             if (popup == null)
                 return;
+            if (popup._window == null)
+                return;
 
             if (eventArgs.NewValue == eventArgs.OldValue)
                 return;

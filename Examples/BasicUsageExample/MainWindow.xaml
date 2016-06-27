@@ -9,7 +9,7 @@
             
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <toastNotifications:NotificationTray NotificationsSource="{Binding NotificationSource}"  VerticalAlignment="Top" HorizontalAlignment="Right" />
+        <toastNotifications:NotificationTray NotificationsSource="{Binding NotificationSource}" PopupFlowDirection="LeftUp"  VerticalAlignment="Top" HorizontalAlignment="Right" />
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
             <Button Content="Information" Margin="5" Width="100" Click="Button_ShowInformationClick" />

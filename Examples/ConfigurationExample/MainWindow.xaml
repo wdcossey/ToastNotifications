@@ -23,7 +23,9 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <toastNotifications:NotificationTray Grid.RowSpan="2" Grid.ColumnSpan="2" NotificationsSource="{Binding NotificationSource}" PopupFlowDirection="{Binding PopupFlowDirection}"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <toastNotifications:NotificationTray Grid.RowSpan="2" Grid.ColumnSpan="2" 
+                                                 NotificationsSource="{Binding NotificationSource}" 
+                                                 PopupFlowDirection="{Binding PopupFlowDirection}" />
         </Grid>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
