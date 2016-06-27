@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Interop;
 
 namespace ToastNotifications
 {
@@ -117,36 +119,35 @@ namespace ToastNotifications
             Owner = GetWindow(attachedElemnt);
             _attachedElement = attachedElemnt;
         }
-
         public void UpdateBounds()
         {
-            var location = _attachedElement.PointToScreen(new Point(0, 0));
-
+            var transform = PresentationSource.FromVisual(Owner).CompositionTarget.TransformFromDevice;
+            var location = transform.Transform(_attachedElement.PointToScreen(new Point(0, 0)));
 
             switch (PopupFlowDirection)
             {
                 case PopupFlowDirection.LeftUp:
                     {
-                        Left = location.X - Width;
-                        Top = location.Y - Height;
+                        this.Left = location.X;
+                        this.Top = location.Y;
                     }
                     break;
                 case PopupFlowDirection.LeftDown:
                     {
-                        Left = location.X - Width;
-                        Top = location.Y;
+                        this.Left = location.X;
+                        this.Top = location.Y + _attachedElement.ActualHeight - this.Height;
                     }
                     break;
                 case PopupFlowDirection.RightUp:
                     {
-                        Left = location.X;
-                        Top = location.Y - Height;
+                        this.Left = location.X + _attachedElement.ActualWidth - this.Width;
+                        this.Top = location.Y;
                     }
                     break;
                 case PopupFlowDirection.RightDown:
                     {
-                        Left = location.X;
-                        Top = location.Y;
+                        this.Left = location.X + _attachedElement.ActualWidth - this.Width;
+                        this.Top = location.Y + _attachedElement.ActualHeight - this.Height;
                     }
                     break;
             }
