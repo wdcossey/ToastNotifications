@@ -121,7 +121,14 @@ namespace ToastNotifications
         }
         public void UpdateBounds()
         {
-            var transform = PresentationSource.FromVisual(Owner).CompositionTarget.TransformFromDevice;
+            var source = PresentationSource.FromVisual(Owner);
+            if (source == null 
+                || source.CompositionTarget == null)
+            {
+                return;
+            }
+
+            var transform = source.CompositionTarget.TransformFromDevice;
             var location = transform.Transform(_attachedElement.PointToScreen(new Point(0, 0)));
 
             switch (PopupFlowDirection)
