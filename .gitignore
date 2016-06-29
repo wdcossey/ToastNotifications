@@ -243,3 +243,4 @@ _Pvt_Extensions
 .idea/
 *.sln.iml
 ToastNotifications/output/ToastNotifications.dll
+ToastNotifications/nuget.exe
