@@ -79,7 +79,8 @@
     <Grid x:Name="Container">
         <toastNotifications:NotificationPopup x:Name="Popup" 
                                               PopupFlowDirection="{Binding ElementName=Self, Path=PopupFlowDirection}"
-                                              IsOpen="{Binding NotificationsSource.IsOpen, UpdateSourceTrigger=PropertyChanged, ElementName=Self}">
+                                              IsOpen="{Binding NotificationsSource.IsOpen, UpdateSourceTrigger=PropertyChanged, ElementName=Self}"
+                                              IsTopmost="{Binding NotificationsSource.IsTopmost, UpdateSourceTrigger=PropertyChanged, ElementName=Self}">
 
             <ItemsControl x:Name="ItemsControl"  ItemsSource="{Binding NotificationsSource.NotificationMessages,ElementName=Self}" 
                           ItemTemplateSelector="{StaticResource NotificationTemplateSelector}"  />

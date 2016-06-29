@@ -9,7 +9,6 @@
         ShowActivated="False"
         ShowInTaskbar="False"
         WindowState="Normal"
-        Topmost="True"
         AllowsTransparency="True"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"

@@ -12,6 +12,7 @@ namespace ToastNotifications
     {
         private readonly DispatcherTimer _timer;
         private bool _isOpen;
+        private bool _isTopmost;
 
         public ObservableCollection<NotificationViewModel> NotificationMessages { get; private set; }
 
@@ -26,6 +27,16 @@ namespace ToastNotifications
             {
                 _isOpen = value;
                 OnPropertyChanged(nameof(IsOpen));
+            }
+        }
+
+        public bool IsTopmost
+        {
+            get { return _isTopmost; }
+            set
+            {
+                _isTopmost = value;
+                OnPropertyChanged(nameof(IsTopmost));
             }
         }
 
