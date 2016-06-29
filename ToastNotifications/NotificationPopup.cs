@@ -30,6 +30,7 @@ namespace ToastNotifications
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
             _window = new NotificationPopupWindow(this);
+            _window.PopupFlowDirection = this.PopupFlowDirection;
             _window.PopupContent = Child;
         }
 
