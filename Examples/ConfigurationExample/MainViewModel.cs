@@ -25,7 +25,7 @@ namespace ConfigurationExample
             get { return _popupFlowDirection; }
             set
             {
-                _popupFlowDirection = value; 
+                _popupFlowDirection = value;
                 OnPropertyChanged(nameof(PopupFlowDirection));
             }
         }
@@ -35,7 +35,10 @@ namespace ConfigurationExample
         {
             NotificationSource = new NotificationsSource
             {
+                /*
                 MaximumNotificationCount = 4,
+                */
+                MaximumNotificationCount = NotificationsSource.UnlimitedNotifications,
                 NotificationLifeTime = TimeSpan.FromSeconds(3)
             };
         }
