@@ -1,7 +1,7 @@
 ﻿<Window x:Class="ConfigurationExample.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:toastNotifications="clr-namespace:ToastNotifications;assembly=ToastNotifications"
+        xmlns:toast="clr-namespace:ToastNotifications;assembly=ToastNotifications"
         xmlns:configurationExample="clr-namespace:ConfigurationExample"
         Title="MainWindow" Height="700" Width="1024">
     <Grid>
@@ -23,9 +23,9 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <toastNotifications:NotificationTray Grid.RowSpan="2" Grid.ColumnSpan="2" 
-                                                 NotificationsSource="{Binding NotificationSource}" 
-                                                 PopupFlowDirection="{Binding PopupFlowDirection}" />
+            <toast:NotificationTray Grid.RowSpan="2" Grid.ColumnSpan="2" 
+                                    NotificationsSource="{Binding NotificationSource}" 
+                                    PopupFlowDirection="{Binding PopupFlowDirection}" />
         </Grid>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:toastNotifications="clr-namespace:ToastNotifications"
+             xmlns:toast="clr-namespace:ToastNotifications"
              x:Class="ToastNotifications.NotificationTray"
              mc:Ignorable="d" 
              x:Name="Self">
@@ -26,7 +26,7 @@
         </Canvas>
 
         <DataTemplate x:Key="InformationTemplate">
-            <toastNotifications:NotificationControl 
+            <toast:NotificationControl 
                 Background="RoyalBlue" 
                 Icon="{StaticResource InformationIcon}" 
                 Notification="{Binding}"  
@@ -34,56 +34,56 @@
                 NotificationClosing="NotificationControl_OnNotificationClosing" >
 
                 
-            </toastNotifications:NotificationControl>
+            </toast:NotificationControl>
         </DataTemplate>
         
         <DataTemplate x:Key="SuccessTemplate">
-            <toastNotifications:NotificationControl 
+            <toast:NotificationControl 
                 Background="LimeGreen" 
                 Icon="{StaticResource SuccessIcon}" 
                 Notification="{Binding}"  
                 NotificationClosed="Notification_OnNotificationClosed" 
                 NotificationClosing="NotificationControl_OnNotificationClosing" >
 
-            </toastNotifications:NotificationControl>
+            </toast:NotificationControl>
         </DataTemplate>
         
         <DataTemplate x:Key="WarningTemplate">
-            <toastNotifications:NotificationControl
+            <toast:NotificationControl
                 Background="Orange" 
                 Icon="{StaticResource WarninIcon}" 
                 Notification="{Binding}"  
                 NotificationClosed="Notification_OnNotificationClosed" 
                 NotificationClosing="NotificationControl_OnNotificationClosing"  >
 
-            </toastNotifications:NotificationControl>
+            </toast:NotificationControl>
         </DataTemplate>
         
         <DataTemplate x:Key="ErrorTemplate">
-            <toastNotifications:NotificationControl 
+            <toast:NotificationControl 
                 Background="OrangeRed" 
                 Icon="{StaticResource ErrorIcon}" 
                 Notification="{Binding}" 
                 NotificationClosed="Notification_OnNotificationClosed" 
                 NotificationClosing="NotificationControl_OnNotificationClosing"  >
 
-            </toastNotifications:NotificationControl>
+            </toast:NotificationControl>
         </DataTemplate>
 
-        <toastNotifications:NotificationTypeTemplateSelector x:Key="NotificationTemplateSelector" 
+        <toast:NotificationTypeTemplateSelector x:Key="NotificationTemplateSelector" 
 				InformationTemplate="{StaticResource InformationTemplate}"
 				SuccessTemplate="{StaticResource SuccessTemplate}"
 				WarningTemplate="{StaticResource WarningTemplate}"
 				ErrorTemplate="{StaticResource ErrorTemplate}"/>
     </UserControl.Resources>
     <Grid x:Name="Container">
-        <toastNotifications:NotificationPopup x:Name="Popup" 
+        <toast:NotificationPopup x:Name="Popup" 
                                               PopupFlowDirection="{Binding ElementName=Self, Path=PopupFlowDirection}"
                                               IsOpen="{Binding NotificationsSource.IsOpen, UpdateSourceTrigger=PropertyChanged, ElementName=Self}"
                                               IsTopmost="{Binding NotificationsSource.IsTopmost, UpdateSourceTrigger=PropertyChanged, ElementName=Self}">
 
             <ItemsControl x:Name="ItemsControl"  ItemsSource="{Binding NotificationsSource.NotificationMessages,ElementName=Self}" 
                           ItemTemplateSelector="{StaticResource NotificationTemplateSelector}"  />
-        </toastNotifications:NotificationPopup>
+        </toast:NotificationPopup>
     </Grid>
 </UserControl>
