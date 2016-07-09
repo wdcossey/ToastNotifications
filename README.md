@@ -19,10 +19,10 @@ Install-Package ToastNotifications
 
 ```xml
 <!- import namespace -->
-xmlns:toastNotifications="clr-namespace:ToastNotifications;assembly=ToastNotifications"
+xmlns:toast="clr-namespace:ToastNotifications;assembly=ToastNotifications"
 
 <!- add NotificationTray to place in view where notifications should appear and make binding to NotificationsSource in viewmodel -->
-<toastNotifications:NotificationTray  NotificationsSource="{Binding NotificationSource}"
+<toast:NotificationTray  NotificationsSource="{Binding NotificationSource}"
                                       VerticalAlignment="Top"
                                       HorizontalAlignment="Right" />
 ```
@@ -91,7 +91,7 @@ Avalaible options are:
 * RightUp
 
 ```xml
-<toastNotifications:NotificationTray PopupFlowDirection="LeftDown"  />
+<toast:NotificationTray PopupFlowDirection="LeftDown"  />
 ```
 
 ######Notification source properties
@@ -102,12 +102,18 @@ public MainViewModel()
     NotificationSource = new NotificationsSource
     {
         MaximumNotificationCount = 4,
+
         NotificationLifeTime = TimeSpan.FromSeconds(3)
     };
 }
 ```
 
+Set MaximumNotificationCount = NotificationsSource.UnlimitedNotifications to allow unlimited number of notifications
+
+
 ##Contributors
 Uwy (https://github.com/Uwy)
 
 Andy Li (https://github.com/oneandy)
+
+BrainCrumbz (https://github.com/BrainCrumbz)
