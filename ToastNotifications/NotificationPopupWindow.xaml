@@ -14,7 +14,7 @@
         SizeToContent="WidthAndHeight"
         x:Name="Self"
         Height="300" Width="300" Background="Transparent" >
-    <Grid Width="300" x:Name="Container" Background="Red">
+    <Grid Width="300" x:Name="Container">
         <ContentPresenter Content="{Binding ElementName=Self, Path=PopupContent}" />
     </Grid>
 </Window>
