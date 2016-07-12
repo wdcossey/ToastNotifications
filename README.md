@@ -22,7 +22,7 @@ Install-Package ToastNotifications
 xmlns:toast="clr-namespace:ToastNotifications;assembly=ToastNotifications"
 
 <!- add NotificationTray to place in view where notifications should appear and make binding to NotificationsSource in viewmodel -->
-<toast:NotificationTray  NotificationsSource="{Binding NotificationSource}"
+<toast:NotificationTray  NotificationsSource="{Binding NotificationSource}" PopupFlowDirection="RightUp"
                                       VerticalAlignment="Top"
                                       HorizontalAlignment="Right" />
 ```

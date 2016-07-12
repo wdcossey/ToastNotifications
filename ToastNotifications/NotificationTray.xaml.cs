@@ -11,7 +11,20 @@ namespace ToastNotifications
     {
         public static readonly DependencyProperty NotificationsSourceProperty = DependencyProperty.Register(nameof(NotificationsSource), typeof(NotificationsSource), typeof(NotificationTray), new PropertyMetadata(new NotificationsSource()));
 
-        public static readonly DependencyProperty PopupFlowDirectionProperty = DependencyProperty.Register(nameof(PopupFlowDirection), typeof(PopupFlowDirection), typeof(NotificationTray), new FrameworkPropertyMetadata(default(PopupFlowDirection)));
+        public static readonly DependencyProperty PopupFlowDirectionProperty = DependencyProperty.Register(nameof(PopupFlowDirection), typeof(PopupFlowDirection), typeof(NotificationTray), new FrameworkPropertyMetadata(default(PopupFlowDirection), FrameworkPropertyMetadataOptions.AffectsArrange | FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsParentArrange | FrameworkPropertyMetadataOptions.AffectsParentMeasure | FrameworkPropertyMetadataOptions.AffectsRender, PopupFlowDirectionPropertyChanged));
+
+        public static readonly DependencyProperty ShouldReverseItemsProperty = DependencyProperty.Register(nameof(ShouldReverseItems), typeof(bool), typeof(NotificationTray), new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.AffectsArrange | FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsParentArrange | FrameworkPropertyMetadataOptions.AffectsParentMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
+
+
+        private static void PopupFlowDirectionPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var notificationTray = d as NotificationTray;
+            if (notificationTray == null)
+                return;
+
+            notificationTray.SetShouldReverseItems(e.NewValue as PopupFlowDirection? ?? PopupFlowDirection.LeftDown);
+        }
+
 
         public NotificationTray()
         {
@@ -40,9 +53,15 @@ namespace ToastNotifications
             set { SetValue(PopupFlowDirectionProperty, value); }
         }
 
+        public bool ShouldReverseItems
+        {
+            get { return (bool) GetValue(ShouldReverseItemsProperty); }
+            set { SetValue(ShouldReverseItemsProperty, value); }
+        }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
+            SetShouldReverseItems(PopupFlowDirection);
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
@@ -69,6 +88,12 @@ namespace ToastNotifications
                 return;
 
             Popup.UpdateBounds();
+        }
+
+        private void SetShouldReverseItems(PopupFlowDirection popupFlowDirection)
+        {
+            ShouldReverseItems = popupFlowDirection == PopupFlowDirection.LeftDown ||
+                                 popupFlowDirection == PopupFlowDirection.RightDown;
         }
     }
 }

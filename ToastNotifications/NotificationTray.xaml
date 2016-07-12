@@ -33,10 +33,10 @@
                 NotificationClosed="Notification_OnNotificationClosed" 
                 NotificationClosing="NotificationControl_OnNotificationClosing" >
 
-                
+
             </toast:NotificationControl>
         </DataTemplate>
-        
+
         <DataTemplate x:Key="SuccessTemplate">
             <toast:NotificationControl 
                 Background="LimeGreen" 
@@ -47,7 +47,7 @@
 
             </toast:NotificationControl>
         </DataTemplate>
-        
+
         <DataTemplate x:Key="WarningTemplate">
             <toast:NotificationControl
                 Background="Orange" 
@@ -58,7 +58,7 @@
 
             </toast:NotificationControl>
         </DataTemplate>
-        
+
         <DataTemplate x:Key="ErrorTemplate">
             <toast:NotificationControl 
                 Background="OrangeRed" 
@@ -82,8 +82,14 @@
                                               IsOpen="{Binding NotificationsSource.IsOpen, UpdateSourceTrigger=PropertyChanged, ElementName=Self}"
                                               IsTopmost="{Binding NotificationsSource.IsTopmost, UpdateSourceTrigger=PropertyChanged, ElementName=Self}">
 
-            <ItemsControl x:Name="ItemsControl"  ItemsSource="{Binding NotificationsSource.NotificationMessages,ElementName=Self}" 
-                          ItemTemplateSelector="{StaticResource NotificationTemplateSelector}"  />
+
+            <toast:ReversableItemsControl x:Name="ItemsControl"  ItemsSource="{Binding NotificationsSource.NotificationMessages,ElementName=Self}" 
+                          ItemTemplateSelector="{StaticResource NotificationTemplateSelector}" 
+                            ShouldReverseItems="{Binding ElementName=Self, Path=ShouldReverseItems, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" >
+
+
+            </toast:ReversableItemsControl>
+
         </toast:NotificationPopup>
     </Grid>
 </UserControl>
