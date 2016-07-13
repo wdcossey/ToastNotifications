@@ -1,7 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography;
 using System.Windows;
-using System.Windows.Forms;
-using System.Windows.Interop;
 
 namespace ToastNotifications
 {
@@ -122,11 +121,12 @@ namespace ToastNotifications
         public void UpdateBounds()
         {
             var source = PresentationSource.FromVisual(Owner);
-            if (source == null 
-                || source.CompositionTarget == null)
+            if (source == null || source.CompositionTarget == null)
             {
                 return;
             }
+
+            Container.Height = Owner.ActualHeight; // not perfect adjustment but for actual needs it works fine 
 
             var transform = source.CompositionTarget.TransformFromDevice;
             var location = transform.Transform(_attachedElement.PointToScreen(new Point(0, 0)));
