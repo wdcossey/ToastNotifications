@@ -90,7 +90,10 @@ namespace ToastNotifications
 
         public void Hide(Guid id)
         {
-            var n = NotificationMessages.Single(x => x.Id == id);
+            var n = NotificationMessages.SingleOrDefault(x => x.Id == id);
+            if (n == null)
+                return;
+
             n.InvokeHideAnimation();
 
             Task.Factory.StartNew(() =>
