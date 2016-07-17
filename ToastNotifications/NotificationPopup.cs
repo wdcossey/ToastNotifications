@@ -30,8 +30,8 @@ namespace ToastNotifications
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
             _window = new NotificationPopupWindow(this);
-            _window.Topmost = this.IsTopmost;
-            _window.PopupFlowDirection = this.PopupFlowDirection;
+            _window.Topmost = IsTopmost;
+            _window.PopupFlowDirection = PopupFlowDirection;
             _window.PopupContent = Child;
         }
 
@@ -78,6 +78,9 @@ namespace ToastNotifications
 
             bool isOpen = (bool) eventArgs.NewValue;
 
+            if (popup._window == null)
+                return;
+
             if (isOpen)
                 popup._window.Show();
             else
@@ -95,8 +98,11 @@ namespace ToastNotifications
             var popup = dependencyObject as NotificationPopup;
             if (popup == null)
                 return;
-
+            
             if (eventArgs.NewValue == eventArgs.OldValue)
+                return;
+
+            if (popup._window == null)
                 return;
 
             popup._window.Topmost = (bool)eventArgs.NewValue;
@@ -127,13 +133,15 @@ namespace ToastNotifications
             var popup = dependencyObject as NotificationPopup;
             if (popup == null)
                 return;
-            if (popup._window == null)
-                return;
 
             if (eventArgs.NewValue == eventArgs.OldValue)
                 return;
 
             var flowDirection = (PopupFlowDirection)eventArgs.NewValue;
+
+            if (popup._window == null)
+                return;
+
             popup._window.PopupFlowDirection = flowDirection;
         }
     }
