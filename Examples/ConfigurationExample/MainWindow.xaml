@@ -11,6 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         
@@ -27,15 +28,16 @@
                                     NotificationsSource="{Binding NotificationSource}" 
                                     PopupFlowDirection="{Binding PopupFlowDirection}" />
         </Grid>
-
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+        <TextBox x:Name="sampleTextInput" Grid.Row="1" />
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2">
             <RadioButton IsChecked="{Binding Path=PopupFlowDirection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=LeftUp}">LeftUp</RadioButton>
             <RadioButton IsChecked="{Binding Path=PopupFlowDirection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=LeftDown}">LeftDown</RadioButton>
             <RadioButton IsChecked="{Binding Path=PopupFlowDirection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=RightUp}">RightUp</RadioButton>
             <RadioButton IsChecked="{Binding Path=PopupFlowDirection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=RightDown}">RightDown</RadioButton>
         </StackPanel>
-
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2">
+    
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3">
             <Button Content="Information" Margin="5" Width="100" Click="Button_ShowInformationClick" />
             <Button Content="Success" Margin="5" Width="100" Click="Button_ShowSuccessClick" />
             <Button Content="Warning" Margin="5" Width="100" Click="Button_ShowWarningClick" />

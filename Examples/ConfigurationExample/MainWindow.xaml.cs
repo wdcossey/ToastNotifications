@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using ToastNotifications;
 
 namespace ConfigurationExample
 {
@@ -17,24 +18,46 @@ namespace ConfigurationExample
         private int _count = 0;
         private readonly MainViewModel _vm;
 
+        private void ShowInternal(NotificationType type, string message)
+        {
+            message = string.IsNullOrWhiteSpace(message) ? $"{_count++} {type.ToString()}" : message;
+            switch (type)
+            {
+                case NotificationType.Error:
+                    _vm.ShowError(message);
+                    break;
+                case NotificationType.Information:
+                    _vm.ShowInformation(message);
+                    break;
+                case NotificationType.Success:
+                    _vm.ShowSuccess(message);
+                    break;
+                case NotificationType.Warning:
+                    _vm.ShowWarning(message);
+                    break;
+                default:
+                    throw new NotImplementedException($"Following notification type isn't supported : {type}");
+            }
+        }
+
         private void Button_ShowInformationClick(object sender, RoutedEventArgs e)
         {
-            _vm.ShowInformation(String.Format("{0} Information", _count++));
+            this.ShowInternal(NotificationType.Information, this.sampleTextInput.Text);
         }
 
         private void Button_ShowSuccessClick(object sender, RoutedEventArgs e)
         {
-            _vm.ShowSuccess(String.Format("{0} Success", _count++));
+            this.ShowInternal(NotificationType.Success, this.sampleTextInput.Text);
         }
 
         private void Button_ShowWarningClick(object sender, RoutedEventArgs e)
         {
-            _vm.ShowWarning(String.Format("{0} Warning", _count++));
+            this.ShowInternal(NotificationType.Warning, this.sampleTextInput.Text);
         }
 
         private void Button_ShowErrorClick(object sender, RoutedEventArgs e)
         {
-            _vm.ShowError(String.Format("{0} Error", _count++));
+            this.ShowInternal(NotificationType.Error, this.sampleTextInput.Text);
         }
     }
 }
