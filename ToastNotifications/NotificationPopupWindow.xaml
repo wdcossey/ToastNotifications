@@ -13,7 +13,8 @@
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         x:Name="Self"
-        Height="300"  Background="Transparent" >
+        MinHeight="300" 
+        Background="Transparent" >
     <Grid Width="260" x:Name="Container">
         <ContentPresenter Content="{Binding ElementName=Self, Path=PopupContent}" />
     </Grid>
