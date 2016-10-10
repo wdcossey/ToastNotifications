@@ -122,6 +122,8 @@ public MainViewModel()
 
 Set `MaximumNotificationCount = NotificationsSource.UnlimitedNotifications` to allow unlimited number of notifications.
 
+Set `NotificationLifeTime = NotificationsSource.NeverEndingNotification` to make notifications opened until user close them.
+
 ## Contributors
 
 Uwy (https://github.com/Uwy)
