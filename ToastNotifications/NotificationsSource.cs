@@ -14,7 +14,8 @@ namespace ToastNotifications
         private bool _isOpen;
         private bool _isTopmost;
 
-        public const int UnlimitedNotifications = -1;
+        public static readonly int UnlimitedNotifications = -1;
+        public static readonly TimeSpan NeverEndingNotification = TimeSpan.MaxValue;
 
         public ObservableCollection<NotificationViewModel> NotificationMessages { get; private set; }
 
@@ -55,9 +56,13 @@ namespace ToastNotifications
 
         private void TimerOnTick(object sender, EventArgs eventArgs)
         {
-            var currentTime = DateTime.Now;
+            if (NotificationLifeTime == NeverEndingNotification)
+                return;
 
-            var itemsToRemove = NotificationMessages.Where(x => currentTime - x.CreateTime >= NotificationLifeTime).Select(x => x.Id).ToList();
+            var currentTime = DateTime.Now;
+            var itemsToRemove = NotificationMessages
+                .Where(x => currentTime - x.CreateTime >= NotificationLifeTime)
+                .Select(x => x.Id).ToList();
 
             foreach (var id in itemsToRemove)
             {
@@ -91,7 +96,7 @@ namespace ToastNotifications
         public void Hide(Guid id)
         {
             var n = NotificationMessages.SingleOrDefault(x => x.Id == id);
-            if (n == null || n.InvokeHideAnimation == null)
+            if (n?.InvokeHideAnimation == null)
                 return;
 
             n.InvokeHideAnimation();
