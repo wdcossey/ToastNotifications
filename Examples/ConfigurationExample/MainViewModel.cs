@@ -35,7 +35,7 @@ namespace ConfigurationExample
         {
             NotificationSource = new NotificationsSource
             {
-                MaximumNotificationCount = NotificationsSource.UnlimitedNotifications,
+                MaximumNotificationCount = 5,
                 NotificationLifeTime = TimeSpan.FromSeconds(3)
             };
         }
@@ -65,7 +65,8 @@ namespace ConfigurationExample
         protected virtual void OnPropertyChanged(string propertyName = null)
         {
             var handler = PropertyChanged;
-            if (handler != null) handler.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (handler != null)
+                handler.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
