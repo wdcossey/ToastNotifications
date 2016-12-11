@@ -35,11 +35,11 @@
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
-  <PropertyGroup Condition="('$(Configuration)' == 'Debug') Or ('$(UseTemporarySignCert)' == 'true')">
-    <AssemblyOriginatorKeyFile>DevCrew.WpfToastNotifications_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
   <PropertyGroup Condition="('$(Configuration)' == 'Release') And ('$(UseTemporarySignCert)' != 'true')">
     <AssemblyOriginatorKeyFile>DevCrew.WpfToastNotifications.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup  Condition="('$(Configuration)' == 'Debug') Or ('$(UseTemporarySignCert)' == 'true')">
+    <AssemblyOriginatorKeyFile>`DevCrew.WpfToastNotifications_TemporaryKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -98,6 +98,7 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="ToastNotifications.nuspec" />
+    <None Include="`DevCrew.WpfToastNotifications_TemporaryKey.snk" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="NotificationPopupWindow.xaml">
