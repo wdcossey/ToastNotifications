@@ -127,10 +127,10 @@ Set `NotificationLifeTime = NotificationsSource.NeverEndingNotification` to make
 ## Additional informations
 
 ### Strongly named assembly
-
 Assembly is strongly named using pfx file. Pfx file stored in repository is used only in development and continues build, and it is not used to produce official nuget, the real one is not public.
 
 Development:
+```sha1
 Public key (hash algorithm: sha1):
 002400000480000094000000060200000024000052534131000400000100010021df04555b3db9
 fdba3206cf5129b646a4ea889fa8e605faed25fd735f710c0b8b920b8465e0ca3cdab8e24234a1
@@ -139,8 +139,9 @@ f4784cff36fef6ae322a28daa626068c457137b02316af29c9c409cba65c4e5c5ecedf6a5c2c0a
 bf01e0d0
 
 Public key token is 3a7d2ce07ac615dc
-
+```
 Release:
+```sha1
 Public key (hash algorithm: sha1):
 002400000480000094000000060200000024000052534131000400000100010041e364d228daad
 36e196e7107c6f462568cafe9b0e625e8afbda5db7725e1cdcca788304083b1a92846b372e002c
@@ -149,6 +150,7 @@ efc04b7e726d8b56b0d4974071e3db0c1f139888e582c72da6659fbfcf1801fdcdca2449013ae5
 d0426dce
 
 Public key token is e89d9d7314a7c797
+```
 
 ## Contributors
 
